@@ -1,6 +1,6 @@
 import { createReducer,on } from "@ngrx/store";
 import { initialState } from "./counter.state";
-import {increment,decrement,reset,customIncrement} from "./counter.actions";
+import {increment,decrement,reset,customIncrement, changeText} from "./counter.actions";
 
 const _counterReducer = createReducer(initialState,on(increment,(state)=>{
     return{
@@ -22,6 +22,12 @@ const _counterReducer = createReducer(initialState,on(increment,(state)=>{
     return{
         ...state,
         counter:state.counter + action.value
+    }
+}),
+on(changeText,(state)=>{
+    return{
+        ...state,
+        channelName: 'Modified Text on Click'
     }
 })
 )
